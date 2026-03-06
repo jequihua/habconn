@@ -1,0 +1,405 @@
+Key abstractions
+
+These are the most important conceptual objects in the package.
+
+VectorConnectivityProblem
+
+Represents one landscape instance and its static inputs, such as:
+
+candidate planning units
+
+habitat raster
+
+resistance raster
+
+cost information
+
+species settings
+
+Graphab-related settings
+
+LandscapeState
+
+Represents one dynamic state of an episode, including:
+
+selected planning units
+
+remaining budget
+
+cached values
+
+candidate set
+
+done flags
+
+CandidateGenerator
+
+Produces up to K candidate actions at each step.
+
+ConnectivityEvaluator
+
+Evaluates the current or modified landscape and returns a connectivity objective.
+
+ObservationBuilder
+
+Constructs the observation dictionary and its masks.
+
+VectorHabitatEnv
+
+The Gymnasium environment that coordinates state transitions, observations, rewards, and evaluation.
+
+Development roadmap
+
+The project is being built in carefully staged phases.
+
+Phase 1: foundation
+
+Build the static problem object, dynamic state object, Graphab runner, and exact evaluator.
+
+Phase 2: decision interface
+
+Build candidate generation, masking, action mapping, and padded observation creation.
+
+Phase 3: RL environment
+
+Build the Gymnasium environment using the phase 1 and phase 2 components.
+
+Phase 4: training
+
+Integrate MaskablePPO and add a simple padded feature extractor.
+
+Phase 5: performance and scaling
+
+Add caching, profiling, vectorized envs, and HPC-safe orchestration.
+
+Phase 6: future sophistication
+
+Add set encoders, graph encoders, surrogate evaluators, and raster-action support.
+
+Immediate milestones
+
+The project should start with a very small, reliable milestone rather than jumping straight to training.
+
+Milestone 1
+
+Be able to:
+
+load one tiny landscape instance
+
+represent it as a VectorConnectivityProblem
+
+create a LandscapeState
+
+manually apply one or more polygon selections
+
+evaluate the resulting connectivity via a clean Graphab evaluator
+
+This is the most important first milestone.
+
+Milestone 2
+
+Add:
+
+candidate generation
+
+action masks
+
+padded observations
+
+feature packing
+
+Milestone 3
+
+Wrap the above in a Gymnasium environment and run smoke tests.
+
+Milestone 4
+
+Train a first tiny RL model on small landscapes.
+
+Testing philosophy
+
+Tests are important because the package mixes geospatial logic, RL infrastructure, and external command-line software.
+
+Testing priorities
+1. Unit tests
+
+For:
+
+budget accounting
+
+action masks
+
+candidate generation
+
+state transitions
+
+feature packing
+
+2. Integration tests
+
+For:
+
+Graphab runner behavior
+
+evaluator end-to-end execution
+
+environment reset/step behavior
+
+small benchmark landscapes
+
+3. Deterministic tiny fixtures
+
+Use very small synthetic or minimal real examples where expected behavior is interpretable.
+
+The goal is to make the core logic verifiable even before large-scale training exists.
+
+Configuration philosophy
+
+The package should avoid hard-coded paths and experiment constants inside code.
+
+Configurations should live in structured files under configs/.
+
+Expected config families include:
+
+environment configs
+
+training configs
+
+Graphab runtime configs
+
+local vs HPC runtime configs
+
+A config should specify things like:
+
+data paths
+
+candidate set size K
+
+budget settings
+
+Graphab executable and memory settings
+
+number of workers
+
+training hyperparameters
+
+Data expectations
+
+The early target data format is:
+
+one vector layer of candidate planning units
+
+one habitat raster
+
+one resistance raster
+
+one cost attribute or equivalent cost source
+
+optional additional metadata
+
+The action space is vector-based, meaning the restoration actions select planning units from the vector dataset.
+
+The habitat and resistance rasters remain critical contextual inputs and may influence both features and Graphab evaluation.
+
+Future versions may support purely raster-based actions, but that is not the first implementation target.
+
+How a typical experiment is expected to work
+
+A typical training or evaluation workflow is expected to look like this:
+
+load a landscape instance
+
+construct a VectorConnectivityProblem
+
+initialize an empty LandscapeState
+
+generate candidate actions
+
+build a padded observation
+
+choose an action through the policy
+
+map the chosen action slot to a real planning unit
+
+update the state
+
+evaluate the new connectivity score through the evaluator
+
+compute reward
+
+continue until termination
+
+In later vectorized training:
+
+multiple environments will do this in parallel
+
+each environment worker must use isolated scratch/project paths for Graphab
+
+Planned model evolution
+
+The package is being designed to evolve in stages.
+
+Initial encoder
+
+A padded-and-masked feature extractor, likely using:
+
+shared MLPs for planning-unit features
+
+masked pooling
+
+candidate scoring
+
+global feature concatenation
+
+Later encoder options
+
+Possible future upgrades include:
+
+set encoders
+
+attention-based encoders
+
+graph neural networks
+
+candidate-conditioned graph scoring
+
+The key design principle is that the observation contract should remain stable enough that the environment and evaluator do not need major rewrites when the encoder changes.
+
+Important non-goals for v1
+
+Version 1 is not trying to solve everything at once.
+
+The following are explicitly out of scope or secondary for the first version:
+
+highly optimized large-scale raster-action planning
+
+multi-node distributed training
+
+production-grade surrogate reward modeling
+
+full graph neural architectures on day one
+
+every possible ecological objective at once
+
+every possible GIS input format without restrictions
+
+replacing Graphab with a direct Java API integration immediately
+
+The first version is about correctness, modularity, and a clean path forward.
+
+How to continue this project in a new session
+
+A future collaborator, or a future AI session, should be able to continue the project by reading:
+
+this README.md
+
+the code currently present in src/habconn/
+
+the tests
+
+the configs
+
+any small example datasets or fixtures
+
+The most important facts to retain are:
+
+this is a clean refoundation of a prior experimental RL + Graphab codebase
+
+the project is vector-first
+
+restoration actions act on vector planning units
+
+landscapes may vary in size
+
+transfer learning is a first-class design goal
+
+the chosen action design is Option B candidate-based fixed-K selection
+
+observations should support padding + masking now and more advanced graph/set encoders later
+
+Graphab is treated as an external exact evaluator behind a clean interface
+
+local runs are expected first, but single-node HPC training is an important target
+
+the first implementation milestone is the exact end-to-end evaluation pipeline, not the RL environment
+
+If returning to this project later, do not start by adding new experiment scripts. Start by checking whether the foundational abstractions remain clean.
+
+Implementation order
+
+The recommended implementation order is:
+
+1. vector_problem.py
+
+Define the static vector-action landscape problem object.
+
+2. landscape_state.py
+
+Define the dynamic state container.
+
+3. graphab_runner.py
+
+Implement the low-level Graphab subprocess manager.
+
+4. graphab_evaluator.py
+
+Implement exact connectivity evaluation from a state.
+
+5. candidate generation and masks
+
+Implement the decision interface for Option B.
+
+6. feature packing
+
+Implement padded node/candidate/global features and masks.
+
+7. Gymnasium environment
+
+Implement reset and step using the previous components.
+
+8. first training loop
+
+Integrate a simple masked-action RL setup.
+
+That sequence should be followed unless there is a strong reason to deviate.
+
+Repository status
+
+This repository is currently in the foundation stage.
+
+The initial codebase structure has been created, but the main components are intentionally still light or placeholders.
+
+The immediate objective is to build the minimal exact pipeline for a tiny vector landscape before moving on to candidate generation, observations, and training.
+
+This repository should remain disciplined:
+
+keep scripts thin
+
+keep abstractions clean
+
+do not duplicate environment variants
+
+do not hard-code machine-specific paths
+
+do not mix Graphab subprocess code into unrelated modules
+
+prefer small tested steps over fast messy growth
+
+Final note
+
+This project is intentionally being developed slowly and carefully.
+
+The main success criterion is not just “get something to train.”
+The real goal is to create a package that can support:
+
+ecological validity
+
+repeatable experiments
+
+transfer learning research
+
+maintainable software
+
+future methodological upgrades
+
+If the architecture stays clean, the package can evolve from a simple padded-candidate RL system into a far more sophisticated habitat connectivity optimization framework without requiring a full rewrite.
