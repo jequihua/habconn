@@ -1,1 +1,1 @@
-﻿\"\"\"Small benchmark experiment definitions.\"\"\"
+\"\"\"Small benchmark experiment definitions.\"\"\"

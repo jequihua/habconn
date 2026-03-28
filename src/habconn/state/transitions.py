@@ -1,1 +1,1 @@
-﻿\"\"\"State transition logic after applying one action.\"\"\"
+\"\"\"State transition logic after applying one action.\"\"\"

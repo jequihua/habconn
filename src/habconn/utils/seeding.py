@@ -1,1 +1,1 @@
-﻿\"\"\"Random seed utilities for reproducible experiments.\"\"\"
+\"\"\"Random seed utilities for reproducible experiments.\"\"\"

@@ -1,1 +1,1 @@
-﻿\"\"\"Observation space definitions for Gymnasium.\"\"\"
+\"\"\"Observation space definitions for Gymnasium.\"\"\"

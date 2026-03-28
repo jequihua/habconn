@@ -1,4 +1,4 @@
-﻿# src/habconn/state/landscape_state.py
+# src/habconn/state/landscape_state.py
 
 from __future__ import annotations
 

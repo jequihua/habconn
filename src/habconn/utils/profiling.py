@@ -1,1 +1,1 @@
-﻿\"\"\"Profiling and timing helpers.\"\"\"
+\"\"\"Profiling and timing helpers.\"\"\"

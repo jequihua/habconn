@@ -1,1 +1,1 @@
-﻿\"\"\"Budget and cost accounting utilities.\"\"\"
+\"\"\"Budget and cost accounting utilities.\"\"\"

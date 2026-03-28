@@ -1,1 +1,1 @@
-﻿\"\"\"Placeholder for future set/attention encoder.\"\"\"
+\"\"\"Placeholder for future set/attention encoder.\"\"\"

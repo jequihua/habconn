@@ -1,1 +1,1 @@
-﻿\"\"\"Abstract interfaces for connectivity evaluators.\"\"\"
+\"\"\"Abstract interfaces for connectivity evaluators.\"\"\"

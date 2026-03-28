@@ -1,1 +1,1 @@
-﻿\"\"\"Type aliases used across the package.\"\"\"
+\"\"\"Type aliases used across the package.\"\"\"

@@ -1,1 +1,1 @@
-﻿\"\"\"Load and validate habitat and resistance rasters.\"\"\"
+\"\"\"Load and validate habitat and resistance rasters.\"\"\"

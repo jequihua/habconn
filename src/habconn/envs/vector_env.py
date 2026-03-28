@@ -1,1 +1,1 @@
-﻿\"\"\"Gymnasium environment for vector-action habitat restoration.\"\"\"
+\"\"\"Gymnasium environment for vector-action habitat restoration.\"\"\"

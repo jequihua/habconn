@@ -1,1 +1,1 @@
-﻿\"\"\"Placeholder for future raster-action problem definitions.\"\"\"
+\"\"\"Placeholder for future raster-action problem definitions.\"\"\"

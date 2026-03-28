@@ -1,1 +1,1 @@
-﻿\"\"\"Environment wrappers, including masking helpers.\"\"\"
+\"\"\"Environment wrappers, including masking helpers.\"\"\"

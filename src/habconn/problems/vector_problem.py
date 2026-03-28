@@ -1,4 +1,4 @@
-﻿# src/habconn/problems/vector_problem.py
+# src/habconn/problems/vector_problem.py
 
 from __future__ import annotations
 

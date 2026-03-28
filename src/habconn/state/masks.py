@@ -1,1 +1,1 @@
-﻿\"\"\"Action and node masking logic.\"\"\"
+\"\"\"Action and node masking logic.\"\"\"

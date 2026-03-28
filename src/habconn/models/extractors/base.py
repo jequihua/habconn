@@ -1,1 +1,1 @@
-﻿\"\"\"Base feature extractor interfaces.\"\"\"
+\"\"\"Base feature extractor interfaces.\"\"\"

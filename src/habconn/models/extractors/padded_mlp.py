@@ -1,1 +1,1 @@
-﻿\"\"\"Initial padded-and-masked feature extractor for variable-size inputs.\"\"\"
+\"\"\"Initial padded-and-masked feature extractor for variable-size inputs.\"\"\"

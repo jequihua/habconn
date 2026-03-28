@@ -1,1 +1,1 @@
-﻿\"\"\"Vectorized environment creation and worker-safe setup.\"\"\"
+\"\"\"Vectorized environment creation and worker-safe setup.\"\"\"

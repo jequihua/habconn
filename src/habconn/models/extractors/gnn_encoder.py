@@ -1,1 +1,1 @@
-﻿\"\"\"Placeholder for future graph neural encoder.\"\"\"
+\"\"\"Placeholder for future graph neural encoder.\"\"\"

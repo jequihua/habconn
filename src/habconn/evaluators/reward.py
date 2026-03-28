@@ -1,1 +1,1 @@
-﻿\"\"\"Reward shaping and objective-delta computation.\"\"\"
+\"\"\"Reward shaping and objective-delta computation.\"\"\"

@@ -1,1 +1,1 @@
-﻿\"\"\"Global landscape and episode feature builders.\"\"\"
+\"\"\"Global landscape and episode feature builders.\"\"\"

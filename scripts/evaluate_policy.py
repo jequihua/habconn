@@ -1,1 +1,1 @@
-﻿\"\"\"Evaluate a trained policy.\"\"\"
+\"\"\"Evaluate a trained policy.\"\"\"

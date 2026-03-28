@@ -1,1 +1,1 @@
-﻿\"\"\"Core optimization problem interfaces.\"\"\"
+\"\"\"Core optimization problem interfaces.\"\"\"

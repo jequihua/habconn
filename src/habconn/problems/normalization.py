@@ -1,1 +1,1 @@
-﻿\"\"\"Feature normalization and scaling utilities.\"\"\"
+\"\"\"Feature normalization and scaling utilities.\"\"\"

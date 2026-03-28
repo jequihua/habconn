@@ -1,1 +1,1 @@
-﻿\"\"\"Temporary directory and scratch-space helpers.\"\"\"
+\"\"\"Temporary directory and scratch-space helpers.\"\"\"

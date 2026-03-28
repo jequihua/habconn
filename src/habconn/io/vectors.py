@@ -1,1 +1,1 @@
-﻿\"\"\"Load and validate vector planning-unit data.\"\"\"
+\"\"\"Load and validate vector planning-unit data.\"\"\"

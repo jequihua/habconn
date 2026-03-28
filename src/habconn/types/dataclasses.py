@@ -1,1 +1,1 @@
-﻿\"\"\"Shared dataclasses and small structured containers.\"\"\"
+\"\"\"Shared dataclasses and small structured containers.\"\"\"

@@ -1,1 +1,1 @@
-﻿\"\"\"Configuration schemas for the project.\"\"\"
+\"\"\"Configuration schemas for the project.\"\"\"

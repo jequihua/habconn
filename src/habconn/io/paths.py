@@ -1,1 +1,1 @@
-﻿\"\"\"Filesystem path helpers for local and HPC execution.\"\"\"
+\"\"\"Filesystem path helpers for local and HPC execution.\"\"\"

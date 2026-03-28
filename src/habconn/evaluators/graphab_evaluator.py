@@ -1,4 +1,4 @@
-﻿# src/habconn/evaluators/graphab_evaluator.py
+# src/habconn/evaluators/graphab_evaluator.py
 
 from __future__ import annotations
 
@@ -21,10 +21,6 @@ from habconn.state.landscape_state import LandscapeState
 
 @dataclass(slots=True)
 class GraphabEvaluationResult:
-    """
-    Result of exact connectivity evaluation for one landscape state.
-    """
-
     pc_value: float
     selected_pu_ids: list[int]
     habitat_raster_path: Path
@@ -36,13 +32,6 @@ class GraphabEvaluationResult:
 
 
 class GraphabEvaluator:
-    """
-    Exact state evaluator based on:
-    1. materializing modified habitat/resistance rasters
-    2. creating a temporary Graphab project
-    3. computing PC
-    """
-
     def __init__(self, runner: GraphabRunner) -> None:
         self.runner = runner
 
@@ -125,13 +114,16 @@ class GraphabEvaluator:
                 habitat_arr = habitat_arr.copy()
                 resistance_arr = resistance_arr.copy()
 
-                habitat_arr[burned_mask] = problem.habitat_value
+                habitat_arr[burned_mask] = int(problem.habitat_value)
                 resistance_arr[burned_mask] = problem.restored_resistance_value
+
+            # Force Graphab landscape raster to integer type for --create.
+            habitat_arr = np.rint(habitat_arr).astype(np.int16, copy=False)
 
             habitat_profile = hab_src.profile.copy()
             resistance_profile = res_src.profile.copy()
 
-            habitat_profile.update(count=1)
+            habitat_profile.update(count=1, dtype="int16", nodata=problem.habitat_nodata)
             resistance_profile.update(count=1)
 
             with rasterio.open(habitat_out, "w", **habitat_profile) as dst:
@@ -145,27 +137,19 @@ class GraphabEvaluator:
         if not metric_file.exists():
             raise FileNotFoundError(
                 f"Graphab metric file not found: {metric_file}\n"
-                f"Metric stdout:\n{run_result.metric_result.stdout}\n"
-                f"Metric stderr:\n{run_result.metric_result.stderr}"
+                f"Pipeline stdout:\n{run_result.pipeline_result.stdout}\n"
+                f"Pipeline stderr:\n{run_result.pipeline_result.stderr}"
             )
 
         return pd.read_csv(metric_file, sep="\t", header=0)
 
     def _extract_pc_value(self, metric_df: pd.DataFrame) -> float:
-        """
-        Tries a few reasonable patterns for Graphab metric tables.
-
-        In the original repository, PC.txt is read as a tab-separated file.
-        The exact column naming can vary with Graphab settings/version, so this
-        extractor tries a few common cases.
-        """
         lowered = {str(col).strip().lower(): col for col in metric_df.columns}
 
-        for candidate in ("pc", "metric", "value"):
-            if candidate in lowered:
-                series = pd.to_numeric(metric_df[lowered[candidate]], errors="coerce").dropna()
-                if not series.empty:
-                    return float(series.iloc[0])
+        if "pc" in lowered:
+            series = pd.to_numeric(metric_df[lowered["pc"]], errors="coerce").dropna()
+            if not series.empty:
+                return float(series.iloc[0])
 
         numeric_df = metric_df.apply(pd.to_numeric, errors="coerce")
         numeric_values = numeric_df.to_numpy().flatten()
@@ -176,4 +160,4 @@ class GraphabEvaluator:
                 f"Could not extract a numeric PC value from metric table columns: {list(metric_df.columns)}"
             )
 
-        return float(numeric_values[0])
+        return float(numeric_values[-1])

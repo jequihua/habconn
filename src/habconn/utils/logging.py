@@ -1,1 +1,1 @@
-﻿\"\"\"Logging setup utilities.\"\"\"
+\"\"\"Logging setup utilities.\"\"\"

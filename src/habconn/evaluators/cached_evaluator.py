@@ -1,1 +1,1 @@
-﻿\"\"\"Caching wrapper for expensive connectivity evaluations.\"\"\"
+\"\"\"Caching wrapper for expensive connectivity evaluations.\"\"\"

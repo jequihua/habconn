@@ -1,1 +1,1 @@
-﻿\"\"\"Topology and neighborhood summary features.\"\"\"
+\"\"\"Topology and neighborhood summary features.\"\"\"

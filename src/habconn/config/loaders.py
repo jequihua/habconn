@@ -1,1 +1,1 @@
-﻿\"\"\"Utilities to load and validate config files.\"\"\"
+\"\"\"Utilities to load and validate config files.\"\"\"
