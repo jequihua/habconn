@@ -540,3 +540,108 @@ habconn/
         utils/
     tests/
     tools/
+```
+---
+
+# Current Development Status
+
+This section tracks the **actual implementation progress** of the repository, including major design decisions, working components, and recent changes.
+
+It should be read together with the architectural sections above, as it reflects what has already been implemented versus what remains planned.
+
+---
+
+## 2026-03-XX — First Working End-to-End Graphab Pipeline
+
+### Summary
+
+The project reached its **first fully working end-to-end pipeline**:
+
+- vector planning units are loaded from shapefile
+- habitat and resistance rasters are loaded
+- restoration actions rasterize polygons into both rasters
+- Graphab is invoked from Python
+- the Probability of Connectivity (PC) metric is computed
+- sequential actions produce meaningful delta-PC improvements
+
+This validates the **core scientific loop** of the project.
+
+---
+
+### Key components implemented
+
+#### 1. Problem definition
+
+- `VectorConnectivityProblem`
+  - loads shapefile + rasters
+  - validates CRS and dimensions
+  - assigns:
+    - `pu_id`
+    - cost column (currently uniform)
+    - eligibility flags
+  - exposes:
+    - planning unit table
+    - raster metadata
+
+#### 2. State representation
+
+- `LandscapeState`
+  - tracks:
+    - selected planning units
+    - remaining budget
+    - step count
+  - supports:
+    - `initialize()`
+    - `apply_action()`
+
+#### 3. Raster modification logic
+
+- selecting a polygon:
+  - rasterizes geometry onto grid
+  - updates:
+    - habitat → set to 1
+    - resistance → set to restored value (currently minimum)
+
+This is the **core ecological transition function**.
+
+---
+
+#### 4. Graphab integration (baseline evaluator)
+
+- `GraphabRunner`
+  - builds CLI commands
+  - runs Java subprocess
+  - manages working directories
+  - captures stdout/stderr
+
+- `GraphabEvaluator`
+  - creates modified rasters
+  - runs Graphab pipeline:
+    - project creation
+    - habitat definition
+    - linkset creation
+    - graph construction
+    - PC metric computation
+  - parses PC value
+  - returns structured results
+
+---
+
+### Important change: Graphab version rollback
+
+- Graphab **3.0 → 2.8**
+- Reason:
+  - CLI behavior differences
+  - compatibility and stability concerns
+- Codebase adapted to:
+  - Graphab 2.8 command syntax
+  - Java 17 runtime requirement
+
+---
+
+### Verified behavior
+
+Running:
+
+```bash
+python scripts/run_baseline_graphab.py

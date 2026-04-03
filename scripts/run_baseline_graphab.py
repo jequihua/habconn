@@ -36,7 +36,7 @@ def main() -> None:
         vector_path=vector_path,
         habitat_raster_path=habitat_raster_path,
         resistance_raster_path=resistance_raster_path,
-        id_column="lyr.1",
+        id_column="lyr_1",
         area_column="area",
         use_area_as_cost=False,
         uniform_cost=1.0,

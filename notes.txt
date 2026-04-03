@@ -1,18 +1,37 @@
 
-Create venv and activate
+# Create venv and activate
 
 python -m venv .venv (ignore if already created)
 .venv\Scripts\Activate.ps1
 
-Install habconn locally and editable
+# Install habconn locally and editable
 
 pip install -e .
 
-Install necessary packages
+## Sometimes its needed to fix the project TOML:
+
+python -c "from pathlib import Path; p=Path('pyproject.toml'); b=p.read_bytes(); p.write_bytes(b[3:] if b.startswith(b'\xef\xbb\xbf') else b); print('fixed', p)"
+
+## If more files have the same problem: 
+
+python -c "from pathlib import Path; exts={'.py','.toml','.md','.yaml','.yml','.txt','.ps1'}; fixed=[]; 
+for p in Path('.').rglob('*'):
+    if p.is_file() and p.suffix.lower() in exts:
+        b=p.read_bytes()
+        if b.startswith(b'\xef\xbb\xbf'):
+            p.write_bytes(b[3:])
+            fixed.append(str(p))
+print('Removed BOM from', len(fixed), 'file(s)'); print('\n'.join(fixed))"
+
+# Install necessary packages
 
 pip install geopandas rasterio pandas numpy shapely
 
-Check java (needs version 11 or newer)
+And verify environment:
+
+python -c "import geopandas, rasterio, numpy, pandas; print('OK')"
+
+# Check java (needs version 11 or newer)
 
 java -version
 
@@ -21,7 +40,7 @@ java -version
 
 If that works → good
 
-Then confirm:
+## Then confirm:
 
 Get-ChildItem tools
 
@@ -31,12 +50,12 @@ graphab.jar
 
 If not, copy it there. IMPORTANT NOTE: I always change the file to graphab.jar to not change it in the path each new version.
 
-Only reinstall locally if:
+# Only reinstall package locally if:
 change things like:
 pyproject.toml
 dependencies
 package metadata
 
-One more useful 2.8 detail
+## Useful graphab 2.8 detail
 
 For later HPC work, Graphab 2.8 supports -proc n to use multiple cores on one computer, and the docs specifically mention that for a single machine. That belongs in a future config parameter, but I would leave it off for this first baseline test.

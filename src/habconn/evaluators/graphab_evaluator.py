@@ -5,6 +5,7 @@ from __future__ import annotations
 from dataclasses import dataclass, field
 from pathlib import Path
 from typing import Optional
+import hashlib
 
 import numpy as np
 import pandas as pd
@@ -25,6 +26,7 @@ class GraphabEvaluationResult:
     selected_pu_ids: list[int]
     habitat_raster_path: Path
     resistance_raster_path: Path
+    graphab_run_dir: Path
     graphab_project_dir: Path
     metric_file_path: Path
     raw_metric_table: pd.DataFrame
@@ -32,8 +34,25 @@ class GraphabEvaluationResult:
 
 
 class GraphabEvaluator:
-    def __init__(self, runner: GraphabRunner) -> None:
+    """
+    Exact recreate-from-raster evaluator.
+
+    Improvements in this version:
+    - one run directory per evaluation
+    - simple exact-state cache
+    - cleaner resistance sanitation
+    - cleaner diagnostics
+    """
+
+    def __init__(
+        self,
+        runner: GraphabRunner,
+        *,
+        enable_cache: bool = True,
+    ) -> None:
         self.runner = runner
+        self.enable_cache = enable_cache
+        self._cache: dict[str, GraphabEvaluationResult] = {}
 
     def evaluate(
         self,
@@ -42,6 +61,11 @@ class GraphabEvaluator:
         *,
         run_label: Optional[str] = None,
     ) -> GraphabEvaluationResult:
+        cache_key = self._make_cache_key(problem, state)
+
+        if self.enable_cache and cache_key in self._cache:
+            return self._cache[cache_key]
+
         run_dir = self.runner.make_run_directory(prefix=run_label or "eval")
 
         try:
@@ -58,17 +82,19 @@ class GraphabEvaluator:
             run_result = self.runner.run_full_pipeline(
                 habitat_raster_path=habitat_out,
                 resistance_raster_path=resistance_out,
+                run_dir=run_dir,
                 run_label=run_label or "graphab_eval",
             )
 
             metric_df = self._read_metric_table(run_result)
             pc_value = self._extract_pc_value(metric_df)
 
-            return GraphabEvaluationResult(
+            result = GraphabEvaluationResult(
                 pc_value=pc_value,
                 selected_pu_ids=list(state.selected_pu_ids),
                 habitat_raster_path=habitat_out,
                 resistance_raster_path=resistance_out,
+                graphab_run_dir=run_result.run_dir,
                 graphab_project_dir=run_result.project_dir,
                 metric_file_path=run_result.metric_file_path,
                 raw_metric_table=metric_df,
@@ -76,12 +102,35 @@ class GraphabEvaluator:
                     "run_dir": str(run_dir),
                     "project_name": run_result.project_name,
                     "step_count": state.step_count,
+                    "cache_key": cache_key,
+                    "cached": False,
                 },
             )
+
+            if self.enable_cache:
+                self._cache[cache_key] = result
+
+            return result
+
         except Exception:
             if not self.runner.runtime_config.keep_workdirs:
                 self.runner.cleanup_run_directory(run_dir)
             raise
+
+    def clear_cache(self) -> None:
+        self._cache.clear()
+
+    def cache_size(self) -> int:
+        return len(self._cache)
+
+    def _make_cache_key(
+        self,
+        problem: VectorConnectivityProblem,
+        state: LandscapeState,
+    ) -> str:
+        selected = tuple(sorted(int(x) for x in state.selected_pu_ids))
+        payload = f"{problem.name}|{problem.vector_path}|{problem.habitat_raster_path}|{problem.resistance_raster_path}|{selected}"
+        return hashlib.sha256(payload.encode("utf-8")).hexdigest()
 
     def _materialize_modified_rasters(
         self,
@@ -115,16 +164,30 @@ class GraphabEvaluator:
                 resistance_arr = resistance_arr.copy()
 
                 habitat_arr[burned_mask] = int(problem.habitat_value)
-                resistance_arr[burned_mask] = problem.restored_resistance_value
+                resistance_arr[burned_mask] = float(problem.restored_resistance_value)
 
-            # Force Graphab landscape raster to integer type for --create.
+            # Graphab landscape raster for --create must be integer.
             habitat_arr = np.rint(habitat_arr).astype(np.int16, copy=False)
+
+            # Graphab cost distance forbids nonpositive / invalid costs.
+            resistance_arr = resistance_arr.astype(np.float32, copy=False)
+            safe_cost = 1.0
+
+            if problem.resistance_nodata is not None:
+                nodata_mask = resistance_arr == float(problem.resistance_nodata)
+                resistance_arr[nodata_mask] = safe_cost
+
+            invalid_mask = ~np.isfinite(resistance_arr)
+            resistance_arr[invalid_mask] = safe_cost
+
+            nonpositive_mask = resistance_arr <= 0
+            resistance_arr[nonpositive_mask] = safe_cost
 
             habitat_profile = hab_src.profile.copy()
             resistance_profile = res_src.profile.copy()
 
             habitat_profile.update(count=1, dtype="int16", nodata=problem.habitat_nodata)
-            resistance_profile.update(count=1)
+            resistance_profile.update(count=1, dtype="float32", nodata=None)
 
             with rasterio.open(habitat_out, "w", **habitat_profile) as dst:
                 dst.write(habitat_arr, 1)
@@ -137,8 +200,8 @@ class GraphabEvaluator:
         if not metric_file.exists():
             raise FileNotFoundError(
                 f"Graphab metric file not found: {metric_file}\n"
-                f"Pipeline stdout:\n{run_result.pipeline_result.stdout}\n"
-                f"Pipeline stderr:\n{run_result.pipeline_result.stderr}"
+                f"Pipeline stdout:\n{run_result.stdout}\n"
+                f"Pipeline stderr:\n{run_result.stderr}"
             )
 
         return pd.read_csv(metric_file, sep="\t", header=0)

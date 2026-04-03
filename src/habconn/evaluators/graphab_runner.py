@@ -1,5 +1,4 @@
 ﻿# src/habconn/evaluators/graphab_runner.py
-
 from __future__ import annotations
 
 from dataclasses import dataclass, field
@@ -9,6 +8,7 @@ import shutil
 import subprocess
 import tempfile
 import uuid
+
 
 @dataclass(slots=True)
 class GraphabRuntimeConfig:
@@ -20,6 +20,10 @@ class GraphabRuntimeConfig:
     headless: bool = True
     jvm_memory: Optional[str] = None
     extra_java_options: list[str] = field(default_factory=list)
+
+    # Logging / diagnostics
+    capture_output: bool = True
+    max_log_lines_on_error: int = 80
 
     def __post_init__(self) -> None:
         self.graphab_jar_path = Path(self.graphab_jar_path).expanduser().resolve()
@@ -36,9 +40,7 @@ class GraphabProjectConfig:
     """
     Graphab 2.8-style config.
 
-    Graphab 2.8 expects:
-    --create prjname landrasterfile habitat=code1,...,coden [nodata=...]
-             [minarea=...] [maxsize=...] [con8] [dir=...]
+    Current evaluator = exact recreate-from-raster reference evaluator.
     """
 
     habitat_codes: tuple[int, ...] = (1,)
@@ -68,11 +70,20 @@ class GraphabProjectConfig:
 @dataclass(slots=True)
 class GraphabRunResult:
     project_name: str
+    run_dir: Path
     project_dir: Path
     project_xml_path: Path
     metric_file_path: Path
     full_command: list[str]
     pipeline_result: subprocess.CompletedProcess
+
+    @property
+    def stdout(self) -> str:
+        return self.pipeline_result.stdout or ""
+
+    @property
+    def stderr(self) -> str:
+        return self.pipeline_result.stderr or ""
 
 
 class GraphabRunner:
@@ -107,22 +118,34 @@ class GraphabRunner:
         cmd.extend(["-jar", str(self.runtime_config.graphab_jar_path)])
         return cmd
 
+    def _truncate_log(self, text: str) -> str:
+        if not text:
+            return ""
+        lines = text.splitlines()
+        max_lines = self.runtime_config.max_log_lines_on_error
+        if len(lines) <= max_lines:
+            return text
+        tail = "\n".join(lines[-max_lines:])
+        return f"[... trimmed {len(lines) - max_lines} earlier lines ...]\n{tail}"
+
     def _run(self, args: list[str], cwd: Optional[Path] = None) -> subprocess.CompletedProcess:
         cmd = self._java_base_command() + args
         try:
             return subprocess.run(
                 cmd,
                 cwd=str(cwd) if cwd is not None else None,
-                capture_output=True,
+                capture_output=self.runtime_config.capture_output,
                 text=True,
                 check=True,
             )
         except subprocess.CalledProcessError as e:
+            stdout = self._truncate_log(e.stdout or "")
+            stderr = self._truncate_log(e.stderr or "")
             raise RuntimeError(
                 "Graphab command failed.\n\n"
                 f"Command:\n{' '.join(e.cmd)}\n\n"
-                f"STDOUT:\n{e.stdout}\n\n"
-                f"STDERR:\n{e.stderr}"
+                f"STDOUT:\n{stdout}\n\n"
+                f"STDERR:\n{stderr}"
             ) from e
 
     def run_full_pipeline(
@@ -130,12 +153,14 @@ class GraphabRunner:
         *,
         habitat_raster_path: Path,
         resistance_raster_path: Path,
+        run_dir: Optional[Path] = None,
         run_label: Optional[str] = None,
     ) -> GraphabRunResult:
         cfg = self.project_config
-        run_dir = self.make_run_directory(prefix=run_label or "graphab")
+        local_run_dir = run_dir if run_dir is not None else self.make_run_directory(prefix=run_label or "graphab")
+
         project_name = f"project_{uuid.uuid4().hex[:12]}"
-        project_dir = run_dir / project_name
+        project_dir = local_run_dir / project_name
         project_xml_path = project_dir / f"{project_name}.xml"
         metric_file_path = project_dir / cfg.metric_output_filename
 
@@ -167,7 +192,7 @@ class GraphabRunner:
         if cfg.con8:
             args.append("con8")
 
-        args.append(f"dir={run_dir.as_posix()}")
+        args.append(f"dir={local_run_dir.as_posix()}")
 
         args.extend(
             [
@@ -212,6 +237,7 @@ class GraphabRunner:
 
         return GraphabRunResult(
             project_name=project_name,
+            run_dir=local_run_dir,
             project_dir=project_dir,
             project_xml_path=project_xml_path,
             metric_file_path=metric_file_path,
