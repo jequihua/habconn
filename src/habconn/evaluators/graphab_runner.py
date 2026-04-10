@@ -20,6 +20,7 @@ class GraphabRuntimeConfig:
     headless: bool = True
     jvm_memory: Optional[str] = None
     extra_java_options: list[str] = field(default_factory=list)
+    n_proc: Optional[int] = None
 
     # Logging / diagnostics
     capture_output: bool = True
@@ -115,6 +116,7 @@ class GraphabRunner:
             cmd.append("-Djava.awt.headless=true")
 
         cmd.extend(self.runtime_config.extra_java_options)
+
         cmd.extend(["-jar", str(self.runtime_config.graphab_jar_path)])
         return cmd
 
@@ -129,7 +131,15 @@ class GraphabRunner:
         return f"[... trimmed {len(lines) - max_lines} earlier lines ...]\n{tail}"
 
     def _run(self, args: list[str], cwd: Optional[Path] = None) -> subprocess.CompletedProcess:
-        cmd = self._java_base_command() + args
+        cmd = self._java_base_command()
+
+        if self.runtime_config.n_proc is not None:
+            cmd.extend(["-proc", str(self.runtime_config.n_proc)])
+
+        cmd.extend(args)
+
+        print("GRAPHAB CMD:", " ".join(cmd))
+
         try:
             return subprocess.run(
                 cmd,
@@ -241,6 +251,9 @@ class GraphabRunner:
             project_dir=project_dir,
             project_xml_path=project_xml_path,
             metric_file_path=metric_file_path,
-            full_command=self._java_base_command() + args,
+            full_command=(self._java_base_command()
+                          + ([ "-proc", str(self.runtime_config.n_proc) ] if self.runtime_config.n_proc is not None else [])
+                          + args
+            ),
             pipeline_result=pipeline_result,
         )
