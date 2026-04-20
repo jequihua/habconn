@@ -645,3 +645,419 @@ Running:
 
 ```bash
 python scripts/run_baseline_graphab.py
+```
+
+verifies that the bundled example landscape can be evaluated through the
+Graphab CLI path and that sequential restoration actions produce positive PC
+deltas.
+
+---
+
+## 2026-04-20 - Backend, Environment, And Trainable Baseline Foundation
+
+### Summary
+
+Since the first Graphab pipeline, the package has advanced through three
+closed milestones:
+
+- **Graphab backend milestone**: explicit backend abstraction, preserved CLI
+  exact reference path, first Java-service backend, router/fallback behavior,
+  and backend hardening.
+- **Environment contract milestone**: real `VectorHabitatEnv`, stable v1
+  observation and reward contracts, action masks, terminal-consistent
+  reset/step behavior.
+- **Minimal trainable baseline milestone**: first `MaskablePPO` baseline using
+  `FlatObsExtractor`, `make_env()`, `train_baseline()`, and the thin
+  `scripts/train_small_vector.py` entry point.
+
+The package can now run the full path:
+
+```text
+vector/raster data -> VectorConnectivityProblem -> VectorHabitatEnv
+-> Graphab-backed PC evaluation -> MaskablePPO training -> saved model + summary
+```
+
+This is still a small single-landscape baseline, not a transfer-learning
+result. It is now enough to support the next milestone: richer features and
+better evaluation artifacts.
+
+---
+
+### Implemented and verified
+
+#### Backend and exact evaluation
+
+- `GraphabBackend` abstract interface
+- `CliExactBackend` preserving the canonical exact CLI evaluator
+- `JavaServiceBackend` for persistent Graphab service evaluation
+- `BackendRouter` for explicit preferred/fallback backend routing
+- documented v1 limitation: Java service can differ from CLI by roughly
+  5-15% on additive patch sequences due to one service patch versus many CLI
+  pixel patches
+- CLI remains the scientific reference path
+
+#### Environment contract
+
+- `VectorHabitatEnv`
+  - Gymnasium-compatible reset/step API
+  - `Discrete(K)` candidate-slot action space
+  - `action_masks()` for masked-action algorithms
+  - sticky invalid-action termination
+  - terminal observations with all-False action masks
+- v1 observation contract in `features/packing.py`
+  - `action_mask`
+  - `candidate_ids`
+  - `candidate_costs`
+  - `selected_mask`
+  - `node_mask`
+  - `remaining_budget`
+  - `step_count`
+  - `current_pc`
+- v1 reward in `evaluators/reward.py`
+  - raw delta-PC: `pc_after - pc_before`
+
+#### First trainable baseline
+
+- `FlatObsExtractor`
+  - simple MLP-friendly feature extractor
+  - consumes action mask, candidate costs, budget, step count, and current PC
+  - only PC is scaled by `1e5`
+  - costs, budget, and step count are currently raw values
+- `make_env()`
+  - creates the canonical training/evaluation environment from data paths
+  - assembles problem, runner, evaluator, backend, and environment in one place
+- `train_baseline()`
+  - creates and trains `MaskablePPO`
+  - evaluates one deterministic episode
+  - saves model and summary JSON
+- `scripts/train_small_vector.py`
+  - thin runnable entry point for the first baseline
+
+---
+
+### Verified commands
+
+From `08_pkg/habconn` using the local package venv:
+
+```bash
+.venv/Scripts/python -m pytest tests/ -q
+.venv/Scripts/python scripts/train_small_vector.py
+```
+
+Expected state at this point:
+
+- `67 passed`
+- baseline script completes
+- model saved under `tmp/baseline_output/`
+- summary saved at `tmp/baseline_output/baseline_summary.json`
+
+The same dependency stack is also installed in the repo-level `.venv`.
+
+---
+
+### Latest baseline result
+
+The first tiny baseline run uses:
+
+- landscape: `small_vector_001`
+- budget: `3`
+- candidate-set size: `K=10`
+- algorithm: `MaskablePPO`
+- extractor: `FlatObsExtractor`
+- reward: raw delta-PC
+- total requested timesteps: `50`
+
+Representative output:
+
+| Metric | Value |
+|--------|-------|
+| Eval episode return | ~4.17e-06 |
+| Eval episode steps | 3 |
+| Eval final PC | ~2.590e-05 |
+| Selected PUs | `[8, 9, 10]` |
+
+This proves that the current environment is trainable in a minimal technical
+sense. It does **not** prove scientific performance or transfer learning.
+
+---
+
+### Tests and review state
+
+Current verified test count:
+
+- `67` tests passing
+- both repo-level `.venv` and local `08_pkg/habconn/.venv` have the required
+  dependencies
+- `conftest.py` guards tests so they import this checkout rather than another
+  local editable install
+
+Recent review conclusions:
+
+- backend milestone: closed
+- environment milestone: closed
+- minimal trainable baseline milestone: closed
+- next work: richer features and stronger evaluation
+
+Primary review artifact:
+
+- `05_governance/reviews/review_gpt.md`
+
+---
+
+# Development roadmap
+
+## Completed stages
+
+### Stage 0 - Framework integration
+
+- artifact-first workflow populated around the existing `habconn` package
+- governance, status, risks, review logs, and coding prompts established
+
+### Stage 1 - Graphab backend
+
+- backend abstraction implemented
+- CLI exact backend preserved as reference
+- Java service backend implemented and hardened
+- fallback behavior documented and tested
+
+### Stage 2 - Minimal vector habitat environment
+
+- `VectorHabitatEnv` implemented
+- observation, reward, action masks, and terminal semantics verified
+- environment tests replace placeholder smoke tests
+
+### Stage 3 - Minimal trainable baseline
+
+- `MaskablePPO` training path implemented
+- `FlatObsExtractor` implemented
+- baseline script runs and saves artifacts
+- local and repo-level venvs verified
+
+## Proposed next stage
+
+### Stage 3b / Stage 4 bridge - richer feature baseline and evaluation (IMPLEMENTED)
+
+This milestone is complete. The implementation added:
+
+- real feature builders in `features/node_features.py`, `features/candidate_features.py`, and `features/global_features.py`
+- a v2 observation contract with 14 keys (action-level, node-level, global)
+- an upgraded `FlatObsExtractor` consuming action-level + global features (node-level arrays are in the observation, reserved for future encoders)
+- `training/evaluation.py` with `evaluate_policy()` returning a structured `EvalSummary` with per-step rewards and PC values
+- `training/callbacks.py` with `EpisodeHistoryCallback` writing a JSONL training-history artifact
+- upgraded `scripts/train_small_vector.py` and `train_baseline()` to produce the richer artifacts
+
+The repo still contains only one bundled example landscape, so Stage 4
+(transfer-learning-ready experimentation) remains deferred until real additional
+landscapes and split definitions are added.
+
+---
+
+# Immediate milestones
+
+## Current next milestone: richer feature baseline and evaluation
+
+Recommended scope:
+
+- implement useful feature builders in:
+  - `features/node_features.py`
+  - `features/candidate_features.py`
+  - `features/global_features.py`
+- keep topology features minimal unless there is a clear, cheap, tested signal
+- update `features/packing.py` without destabilizing terminal observations
+- update `models/extractors/padded_mlp.py`
+- add simple reusable evaluation helpers in `training/evaluation.py`
+- add minimal logging/checkpoint support only if it improves reviewability
+- update tests and governance artifacts
+
+Do not broaden this into:
+
+- graph/set encoders
+- multi-landscape transfer claims
+- hyperparameter search
+- HPC orchestration
+- backend redesign
+
+---
+
+# Testing philosophy
+
+Tests should prove milestone behavior, not just imports.
+
+Current important checks:
+
+- backend correctness and fallback behavior
+- environment reset/step/reward/termination semantics
+- terminal observation consistency
+- action mask consistency
+- trainable baseline smoke run
+- masked-action selection avoids invalid padded slots
+
+For the next milestone, tests should cover:
+
+- feature-builder output shapes and values
+- observation packing with richer features
+- extractor compatibility with the upgraded observation
+- deterministic evaluation helper behavior
+- baseline script still runs after feature changes
+
+---
+
+# Configuration philosophy
+
+The project currently uses simple dataclasses and explicit path arguments rather
+than a large experiment configuration system.
+
+Current baseline configuration lives in:
+
+- `training/trainer.py` (`BaselineConfig`)
+- `training/make_env.py` (`make_env`)
+- `scripts/train_small_vector.py` (thin path-resolving entry point)
+
+Keep reusable logic in package modules. Scripts should stay thin.
+
+---
+
+# Data expectations
+
+The repository currently includes one example landscape:
+
+- `data/examples/small_vector_001`
+
+Expected files:
+
+- `candidates.shp`
+- `habitat.tif`
+- `resistance.tif`
+
+This is enough for:
+
+- backend smoke/comparison tests
+- environment tests
+- the first trainable baseline
+- richer single-landscape feature/evaluation work
+
+It is not enough for:
+
+- transfer-learning claims
+- train/test landscape splits
+- unseen-landscape generalization evaluation
+
+---
+
+# How a typical experiment is expected to work
+
+A minimal local experiment currently looks like:
+
+1. Create a `VectorConnectivityProblem` from the example data.
+2. Build a `CliExactBackend` through `make_env()`.
+3. Instantiate `VectorHabitatEnv`.
+4. Train `MaskablePPO` with `FlatObsExtractor`.
+5. Use `env.action_masks()` for masked candidate-slot selection.
+6. Evaluate one deterministic episode.
+7. Save model and summary JSON.
+
+Run:
+
+```bash
+cd 08_pkg/habconn
+.venv/Scripts/python scripts/train_small_vector.py
+```
+
+---
+
+# Planned model evolution
+
+The current model is deliberately simple:
+
+- flat MLP extractor
+- candidate costs and masks
+- global scalar state
+- raw delta-PC reward
+
+Planned evolution:
+
+1. richer node/candidate/global features
+2. better evaluation artifacts
+3. reward scaling or normalization experiments if evidence requires them
+4. multi-landscape data and split definitions
+5. set or graph encoders after feature/evaluation basics are stable
+
+---
+
+# Important non-goals for v1
+
+Do not treat the current baseline as:
+
+- scientific proof of good restoration decisions
+- transfer-learning evidence
+- a tuned RL solution
+- a production training pipeline
+- a scalable HPC pipeline
+
+The current baseline proves that the core software loop is trainable and
+reviewable.
+
+---
+
+# How to continue this project in a new session
+
+Start by reading:
+
+1. `CLAUDE.md`
+2. `08_pkg/CONTEXT.md`
+3. `08_pkg/current_status.md`
+4. `03_experiments/run_summary.md`
+5. `05_governance/reviews/review_gpt.md`
+6. `08_pkg/development_backlog.md`
+7. `docs/HABCONN_ROADMAP.md`
+8. this README
+
+Then verify the current state:
+
+```bash
+cd 08_pkg/habconn
+.venv/Scripts/python -m pytest tests/ -q
+.venv/Scripts/python scripts/train_small_vector.py
+```
+
+Then use the next coding prompt:
+
+- `prompts/coding_agent/010_richer_feature_baseline_and_evaluation.md`
+
+---
+
+# Implementation order
+
+Recommended order for the next coding agent:
+
+1. Read the listed handoff artifacts.
+2. Inspect the current feature placeholders.
+3. Implement small node/candidate/global feature builders.
+4. Integrate them into `pack_observation()`.
+5. Update `FlatObsExtractor`.
+6. Add or update tests.
+7. Add lightweight evaluation/logging helpers.
+8. Re-run tests and baseline script.
+9. Update status/governance docs honestly.
+
+---
+
+# Repository status
+
+Current status:
+
+- backend: closed
+- environment: closed
+- minimal trainable baseline: closed
+- current test count: `67 passed`
+- current data fixture: `small_vector_001`
+- next milestone: richer feature baseline and evaluation
+
+Known active limitations:
+
+- one landscape only
+- raw delta-PC reward
+- flat MLP extractor
+- minimal features
+- slow Graphab-backed training
+- no multi-landscape generalization evidence
