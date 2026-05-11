@@ -265,6 +265,8 @@ Use only one option.
 
 ## 7A. Option A: Create A venv With pip
 
+*Important note: at NHR@FAU HPC it is discouraged to work with venv but to work with conda*
+
 From the repository root:
 
 ```bash
@@ -704,7 +706,7 @@ If the cluster uses Slurm, create a file such as:
 run_habconn_smoke.slurm
 ```
 
-Example:
+Example - it does not fully work on the used HPC:
 
 ```bash
 #!/bin/bash
@@ -803,10 +805,106 @@ echo "=== Done ==="
 date
 ```
 
+This is the SLURM script that worked:
+
+
+
+```bash
+#!/bin/bash -l
+#SBATCH --job-name=habconn-smoke
+#SBATCH --nodes=1
+#SBATCH --ntasks=1
+#SBATCH --cpus-per-task=2
+#SBATCH --mem=8G
+#SBATCH --time=00:30:00
+#SBATCH --output=habconn-smoke-%j.out
+#SBATCH --error=habconn-smoke-%j.err
+#SBATCH --export=NONE
+
+set -euo pipefail
+unset SLURM_EXPORT_ENV
+
+module purge
+module load java/jdk8u345-b01-hotspot
+module load python
+
+conda activate habconn-py311
+
+export HABCONN_PKG="$HOME/habconn/habconn-main"
+export HABCONN_SCRATCH="${TMPDIR:-${SCRATCH:-$HABCONN_PKG/tmp}}/habconn_smoke_${SLURM_JOB_ID}"
+mkdir -p "$HABCONN_SCRATCH"
+
+cd "$HABCONN_PKG"
+
+echo "=== Runtime information ==="
+hostname
+date
+pwd
+python --version
+which python
+python -c "import sys; print(sys.executable)"
+python -c "import habconn; print(habconn.__file__)"
+java -version
+ls -lh tools/graphab.jar
+
+echo "=== Unit tests ==="
+python -m pytest tests/unit -q
+
+echo "=== Minimal env factory integration test ==="
+python -m pytest tests/integration/test_training_smoke.py::TestEnvFactory::test_make_env_creates_valid_env -q
+
+echo "=== Scratch-safe baseline smoke run ==="
+python - <<'PY'
+import os
+from pathlib import Path
+
+from habconn.training.trainer import BaselineConfig, train_baseline
+
+pkg = Path(os.environ["HABCONN_PKG"]).resolve()
+scratch = Path(os.environ["HABCONN_SCRATCH"]).resolve()
+
+config = BaselineConfig(
+    data_dir=pkg / "data" / "examples" / "small_vector_001",
+    graphab_jar=pkg / "tools" / "graphab.jar",
+    work_root=scratch / "training_runs",
+    output_dir=scratch / "baseline_output",
+    budget=3,
+    k=10,
+    seed=42,
+    total_timesteps=50,
+    n_eval_episodes=1,
+)
+
+summary = train_baseline(config)
+eval_summary = summary["evaluation"]
+ep0 = eval_summary["episodes"][0]
+
+print("\n=== HPC Smoke Test Complete ===")
+print(f"scratch              : {scratch}")
+print(f"total_timesteps      : {summary['total_timesteps']}")
+print(f"training_episodes    : {summary['n_training_episodes_logged']}")
+print(f"eval_mean_return     : {eval_summary['mean_return']:.3e}")
+print(f"eval_mean_final_pc   : {eval_summary['mean_final_pc']:.6e}")
+print(f"eval_mean_delta_pc   : {eval_summary['mean_delta_pc']:.3e}")
+print(f"ep0_selected_pus     : {ep0['selected_pu_ids']}")
+print(f"model_path           : {summary['model_path']}")
+print(f"history_path         : {summary['history_path']}")
+print(f"summary_path         : {config.output_dir / 'baseline_summary.json'}")
+PY
+
+echo "=== Output artifacts ==="
+find "$HABCONN_SCRATCH" -maxdepth 4 -type f -print | sort
+
+echo "=== Done ==="
+date
+```
+
+
+
 Submit:
 
 ```bash
-sbatch run_habconn_smoke.slurm
+sbatch run_habconn_smoke.sh
 ```
 
 Watch:
@@ -1186,6 +1284,7 @@ The smoke test fails if:
 
 ## 20. Recommended Next Step After A Successful Smoke Test
 
+<<<<<<< HEAD
 If this smoke test passes, the next step is **not** transfer
 learning or large-scale HPC training. It is a longer learning
 rehearsal on the same single landscape.
@@ -1209,3 +1308,22 @@ artifacts, see the notebook scaffold under
 **This smoke runbook remains the HPC compatibility gate.** Keep it
 short and fast — do not slow it down into a rehearsal. The
 rehearsal runner is the second step after this gate has passed.
+=======
+If this smoke test passes, the next project milestone should not immediately be large-scale HPC training.
+
+The recommended next milestone is:
+
+```text
+Stage 4: multi-landscape data and transfer-learning-ready evaluation
+```
+
+That means:
+
+- add at least one additional real example landscape;
+- define landscape-level metadata and split artifacts;
+- make evaluation run across multiple landscapes;
+- preserve the single-landscape smoke test as a stable baseline;
+- only then consider vectorized or HPC-scaled training.
+
+The HPC smoke test is a compatibility gate. It should come before, not replace, the multi-landscape milestone.
+>>>>>>> 9515ef820bae372f0f77fdc80998d735bd0ed182

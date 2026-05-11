@@ -1,0 +1,1478 @@
+### Starting TaskPrologue of job 3467842 on f0387 at Wed Apr 22 13:11:02 CEST 2026
+#   SLURM_JOB_NODELIST=f0387
+#   SLURM_JOB_NUM_NODES=1
+#   SLURM_NTASKS=1
+#   SLURM_NPROCS=1
+#   SLURM_TASKS_PER_NODE=1
+#   SLURM_JOB_CPUS_PER_NODE=72
+#   SLURM_EXPORT_ENV=NONE
+Running on cores 0-71 with governor powersave
+### Finished TaskPrologue
+=== Runtime information ===
+f0387.nhr.fau.de
+Wed Apr 22 13:11:03 CEST 2026
+/home/hpc/v116bb/v116bb11/habconn/habconn-main
+Python 3.11.15
+/home/atuin/v116bb/v116bb11/software/private/conda/envs/habconn-py311/bin/python
+/home/atuin/v116bb/v116bb11/software/private/conda/envs/habconn-py311/bin/python
+/home/hpc/v116bb/v116bb11/habconn/habconn-main/src/habconn/__init__.py
+-rw-r--r-- 1 v116bb11 v116bb 54M Apr 20 22:54 tools/graphab.jar
+=== Unit tests ===
+...........................................                              [100%]
+43 passed in 28.73s
+=== Minimal env factory integration test ===
+.                                                                        [100%]
+1 passed in 11.36s
+=== Scratch-safe baseline smoke run ===
+Using cpu device
+Wrapping the env with a `Monitor` wrapper
+Wrapping the env in a DummyVecEnv.
+---------------------------------
+| rollout/           |          |
+|    ep_len_mean     | 3        |
+|    ep_rew_mean     | 4e-06    |
+| time/              |          |
+|    fps             | 0        |
+|    iterations      | 1        |
+|    time_elapsed    | 60       |
+|    total_timesteps | 8        |
+---------------------------------
+-------------------------------------------
+| rollout/                |               |
+|    ep_len_mean          | 3             |
+|    ep_rew_mean          | 4.2e-06       |
+| time/                   |               |
+|    fps                  | 0             |
+|    iterations           | 2             |
+|    time_elapsed         | 108           |
+|    total_timesteps      | 16            |
+| train/                  |               |
+|    approx_kl            | 4.8920512e-05 |
+|    clip_fraction        | 0             |
+|    clip_range           | 0.2           |
+|    entropy_loss         | -2.3          |
+|    explained_variance   | -0.674        |
+|    learning_rate        | 0.0003        |
+|    loss                 | 0.121         |
+|    n_updates            | 2             |
+|    policy_gradient_loss | -0.00224      |
+|    value_loss           | 0.18          |
+-------------------------------------------
+-------------------------------------------
+| rollout/                |               |
+|    ep_len_mean          | 3             |
+|    ep_rew_mean          | 4.13e-06      |
+| time/                   |               |
+|    fps                  | 0             |
+|    iterations           | 3             |
+|    time_elapsed         | 163           |
+|    total_timesteps      | 24            |
+| train/                  |               |
+|    approx_kl            | 1.7911196e-05 |
+|    clip_fraction        | 0             |
+|    clip_range           | 0.2           |
+|    entropy_loss         | -2.3          |
+|    explained_variance   | -3.68         |
+|    learning_rate        | 0.0003        |
+|    loss                 | 0.0379        |
+|    n_updates            | 4             |
+|    policy_gradient_loss | -0.000581     |
+|    value_loss           | 0.118         |
+-------------------------------------------
+-------------------------------------------
+| rollout/                |               |
+|    ep_len_mean          | 3             |
+|    ep_rew_mean          | 4.2e-06       |
+| time/                   |               |
+|    fps                  | 0             |
+|    iterations           | 4             |
+|    time_elapsed         | 203           |
+|    total_timesteps      | 32            |
+| train/                  |               |
+|    approx_kl            | 2.1606684e-06 |
+|    clip_fraction        | 0             |
+|    clip_range           | 0.2           |
+|    entropy_loss         | -2.3          |
+|    explained_variance   | -182          |
+|    learning_rate        | 0.0003        |
+|    loss                 | 0.01          |
+|    n_updates            | 6             |
+|    policy_gradient_loss | -0.000328     |
+|    value_loss           | 0.0463        |
+-------------------------------------------
+-------------------------------------------
+| rollout/                |               |
+|    ep_len_mean          | 3             |
+|    ep_rew_mean          | 4.15e-06      |
+| time/                   |               |
+|    fps                  | 0             |
+|    iterations           | 5             |
+|    time_elapsed         | 250           |
+|    total_timesteps      | 40            |
+| train/                  |               |
+|    approx_kl            | 6.6310167e-06 |
+|    clip_fraction        | 0             |
+|    clip_range           | 0.2           |
+|    entropy_loss         | -2.3          |
+|    explained_variance   | -3.94         |
+|    learning_rate        | 0.0003        |
+|    loss                 | 0.0321        |
+|    n_updates            | 8             |
+|    policy_gradient_loss | -0.000851     |
+|    value_loss           | 0.0384        |
+-------------------------------------------
+------------------------------------------
+| rollout/                |              |
+|    ep_len_mean          | 3            |
+|    ep_rew_mean          | 4.13e-06     |
+| time/                   |              |
+|    fps                  | 0            |
+|    iterations           | 6            |
+|    time_elapsed         | 278          |
+|    total_timesteps      | 48           |
+| train/                  |              |
+|    approx_kl            | 9.842217e-06 |
+|    clip_fraction        | 0            |
+|    clip_range           | 0.2          |
+|    entropy_loss         | -2.3         |
+|    explained_variance   | -408         |
+|    learning_rate        | 0.0003       |
+|    loss                 | 0.00588      |
+|    n_updates            | 10           |
+|    policy_gradient_loss | -0.000955    |
+|    value_loss           | 0.023        |
+------------------------------------------
+-------------------------------------------
+| rollout/                |               |
+|    ep_len_mean          | 3             |
+|    ep_rew_mean          | 4.11e-06      |
+| time/                   |               |
+|    fps                  | 0             |
+|    iterations           | 7             |
+|    time_elapsed         | 312           |
+|    total_timesteps      | 56            |
+| train/                  |               |
+|    approx_kl            | 2.1249056e-05 |
+|    clip_fraction        | 0             |
+|    clip_range           | 0.2           |
+|    entropy_loss         | -2.3          |
+|    explained_variance   | -7.99e+03     |
+|    learning_rate        | 0.0003        |
+|    loss                 | -0.00141      |
+|    n_updates            | 12            |
+|    policy_gradient_loss | -0.00182      |
+|    value_loss           | 0.0155        |
+-------------------------------------------
+
+=== HPC Smoke Test Complete ===
+scratch              : /tmp/3467842.fritz/habconn_smoke_3467842
+total_timesteps      : 50
+training_episodes    : 18
+eval_mean_return     : 4.792e-06
+eval_mean_final_pc   : 2.652311e-05
+eval_mean_delta_pc   : 4.792e-06
+ep0_selected_pus     : [3, 4, 5]
+model_path           : /tmp/3467842.fritz/habconn_smoke_3467842/baseline_output/baseline_model
+history_path         : /tmp/3467842.fritz/habconn_smoke_3467842/baseline_output/history.jsonl
+summary_path         : /tmp/3467842.fritz/habconn_smoke_3467842/baseline_output/baseline_summary.json
+=== Output artifacts ===
+/tmp/3467842.fritz/habconn_smoke_3467842/baseline_output/baseline_model.zip
+/tmp/3467842.fritz/habconn_smoke_3467842/baseline_output/baseline_summary.json
+/tmp/3467842.fritz/habconn_smoke_3467842/baseline_output/history.jsonl
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/project_d7074b1e6588.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/project_d7074b1e6588/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_baseline_c7yox5qe/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/project_0c9b4e2f3c5a.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/project_0c9b4e2f3c5a/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_14l2hs7_/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/project_50d992884f78.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/project_50d992884f78/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_15fbri9x/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/project_83c556e22b1a.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/project_83c556e22b1a/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_2g24qlm8/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/project_5e15b04aa5ca.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/project_5e15b04aa5ca/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_89okfzbg/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/project_301d36a14559.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/project_301d36a14559/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_bscq9uch/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/project_0ab073f3abb5.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/project_0ab073f3abb5/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_g3y7ydom/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/project_3c0b95cafa9e.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/project_3c0b95cafa9e/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_jrveggu5/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/project_16aa5d1c68dc.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/project_16aa5d1c68dc/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_tnfghfsf/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/project_c701530dc481.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/project_c701530dc481/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_wgp1p7to/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/project_deb12241bef8.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/project_deb12241bef8/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_1_ys6j6enc/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/project_6268306570aa.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/project_6268306570aa/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_35x82w6o/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/project_631fd186b286.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/project_631fd186b286/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_4rj92c5o/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/project_65801d10b27b.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/project_65801d10b27b/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2__h959ia2/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/project_3b891d838e93.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/project_3b891d838e93/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_aaxr11ms/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/project_4868a4b8e38b.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/project_4868a4b8e38b/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_dyk60olz/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/project_321ca62f1fe4.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/project_321ca62f1fe4/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eobs4tb7/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/project_a895ee9106ba.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/project_a895ee9106ba/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_eqdwjdoz/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/project_5c88c46c5bae.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/project_5c88c46c5bae/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_es7y0zn8/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/project_fd343772f262.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/project_fd343772f262/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_fivptf_4/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/project_4520755b4883.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/project_4520755b4883/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hsuqeoi7/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/project_022e8673cb94.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/project_022e8673cb94/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_hvjpbrbf/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/project_fb18324331e9.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/project_fb18324331e9/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_kw0x_443/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/project_9da1bd3f20af.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/project_9da1bd3f20af/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_lxuasxdw/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/project_fc4c886943ae.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/project_fc4c886943ae/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_mehlxpil/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/project_023db9d7e69c.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/project_023db9d7e69c/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_sylsryl9/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/project_cfb0f7be35d6.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/project_cfb0f7be35d6/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_uzf1ery2/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/project_caa7a623bf33.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/project_caa7a623bf33/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_wprdnc5k/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/project_4fc32a243ad0.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/project_4fc32a243ad0/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_2_yv0c9oo_/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/project_9302df241f37.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/project_9302df241f37/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_09m80f35/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/project_593aea447a3b.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/project_593aea447a3b/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_2mfktlz0/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/project_03f3de1376ba.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/project_03f3de1376ba/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_5og2beo0/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/project_8f25fa8e1766.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/project_8f25fa8e1766/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_85pfpgfx/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/project_b58d2cf9714e.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/project_b58d2cf9714e/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_94fu39z2/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/project_4acf21b08853.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/project_4acf21b08853/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_9nw5watx/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/project_a4626094f8aa.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/project_a4626094f8aa/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a1jq23bd/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/project_9d48dae84009.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/project_9d48dae84009/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_a3z80dx0/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/project_b70c164f4f8d.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/project_b70c164f4f8d/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_dimzr066/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/project_fc0a0a8c36b7.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/project_fc0a0a8c36b7/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_fphxta7q/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/project_e20699245cf1.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/project_e20699245cf1/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_j99k6grk/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/project_0e86c38bb381.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/project_0e86c38bb381/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_njs0fo5j/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/project_cbbf4e1f4c03.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/project_cbbf4e1f4c03/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_pajivj75/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/project_e9b529289e40.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/project_e9b529289e40/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_qi0vjzgs/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/project_b91c9077960a.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/project_b91c9077960a/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_ri0ydn64/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/project_8670b37985f6.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/project_8670b37985f6/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_tl5vyqdo/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/project_b22a9f1e1de1.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/project_b22a9f1e1de1/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_u7k72zwl/resistance_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/habitat_modified.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/PC.txt
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/graph_main-voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/graph_main-voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/graph_main-voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/graph_main-voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/graph_main-voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/links.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/links.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/links.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/links.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/links.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/linkset_main-links.csv
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/patches.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/patches.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/patches.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/patches.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/patches.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/patches.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/project_60ae6458adbd.xml
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/source.tif
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/voronoi.dbf
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/voronoi.fix
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/voronoi.prj
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/voronoi.shp
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/project_60ae6458adbd/voronoi.shx
+/tmp/3467842.fritz/habconn_smoke_3467842/training_runs/env_step_3_utx6p53j/resistance_modified.tif
+=== Done ===
+Wed Apr 22 13:17:32 CEST 2026
+=== JOB_STATISTICS ===
+=== current date     : Wed Apr 22 13:17:32 CEST 2026
+= Job-ID             : 3467842 on fritz
+= Job-Name           : habconn-smoke
+= Job-Command        : /home/hpc/v116bb/v116bb11/run_habconn_smoke.sh
+= Initial workdir    : /home/hpc/v116bb/v116bb11
+= Queue/Partition    : singlenode
+= Slurm account      : v116bb with QOS=normal
+= Features           : el8
+= Requested resources:  for 00:30:00
+= Elapsed runtime    : 00:06:32
+= Total RAM usage    : 2.4 GiB 
+= Node list          : f0387
+= Subm/Elig/Start/End: 2026-04-22T13:10:59 / 2026-04-22T13:10:59 / 2026-04-22T13:11:00 / 2026-04-22T13:17:32
+======================
+=== Quota infos ======
+    Path                 Used     SoftQ    HardQ    Gracetime  Filec    FileQ    FiHaQ    FileGrace    
+    /home/hpc               8.7G   104.9G   209.7G        N/A  31,374      500K   1,000K        N/A    
+    /home/vault           725.4G  1048.6G  2097.2G        N/A   3,454      200K     400K        N/A    
+    /home/atuin            10.3G     0.0K     0.0K        N/A     134K                          N/A    
+    /lustre                 4.0K     0.0K     0.0K        N/A       1       80K     250K        N/A    
+======================
+=== Network traffic stats (does not include Infiniband) ======
+= HPC internal traffic (e.g. to fileservers): 0 GB in / 0 GB out
+= External traffic: 0 GB in / 0 GB out
+======================
