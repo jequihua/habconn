@@ -18,7 +18,9 @@ small_vector_001 data
 -> VectorHabitatEnv
 -> Graphab CLI exact PC evaluation
 -> MaskablePPO training
--> baseline_model.zip + history.jsonl + baseline_summary.json
+-> single-landscape evaluation comparison
+-> config.json + metadata.json + history.jsonl + baseline_summary.json
+   + evaluation/comparison.{json,csv} + models/final_model.zip
 ```
 
 If the smoke test succeeds, it proves:
@@ -58,18 +60,52 @@ The current verified local state is:
 - backend milestone: closed
 - environment milestone: closed
 - minimal trainable baseline milestone: closed
-- richer feature baseline/evaluation milestone: closeable
-- tests: `79 passed` locally in the package-local venv
+- richer feature baseline/evaluation milestone: closed
+- single-landscape experiment contract milestone: closed (Stage 4 milestone 1)
+- worker-safe vectorized env training milestone: closed (Stage 4 milestone 2)
+  — `DummyVecEnv` only; `SubprocVecEnv` deferred
+- single-landscape evaluation suite milestone: closed (Stage 4 milestone 3)
+  — trained policy compared to `random_valid`, `lowest_cost`, and
+  `largest_area` baselines; comparison written to
+  `<run_dir>/evaluation/comparison.{json,csv}`
+- checkpointing + best-model selection milestone: closed (Stage 4 milestone 4)
+  — periodic checkpoints under `<run_dir>/checkpoints/`, selected
+  candidate copied to `<run_dir>/models/best_model.zip`, selection
+  rule recorded in `<run_dir>/selection/{checkpoint_evaluations.json,
+  model_selection.json}`
+- deployment export milestone: closed (Stage 4 milestone 5)
+  — `best_model.zip` is loaded and deployed on the dedicated single-env
+  eval; selected planning units exported to
+  `<run_dir>/deployment/{deployment_summary.json,
+  selected_planning_units.gpkg, selected_planning_units.csv}`
+- feature inspection + deployment action trace milestone: closed
+  (Stage 4 milestone 6) — v2 observation schema + initial-observation
+  feature summary + per-step action trace written to
+  `<run_dir>/inspection/{observation_schema.json,
+  feature_summary.json, deployment_action_trace.json,
+  deployment_action_trace.csv}`
+- landscape registry and split contract milestone: implemented
+  (Stage 5 milestone 1) — `experiments/landscape_registry.py`
+  ships `LandscapeSpec`, `LandscapeSplit`, validators, the built-in
+  registry (only `small_vector_001`), and the development split
+  (explicitly not transfer-ready). No new bundled landscapes; no
+  transfer-learning training or evaluation.
+- tests: `287 passed` locally in the package-local venv
 - bundled data: only one landscape, `small_vector_001`
-- training path: single environment, synchronous, Graphab CLI-backed
+- training path: configurable `n_envs` (default 1, single-env legacy path);
+  `n_envs > 1` uses `DummyVecEnv` with isolated `<work_root>/worker_NNN/`
+  Graphab scratch directories per worker
 
 Important current limitations:
 
 - Only one bundled landscape exists.
 - Training is slow because each environment step calls exact Graphab evaluation.
+- `DummyVecEnv` runs sub-environments serially in the same process; there is
+  no `SubprocVecEnv` parallelism yet.
 - The current model is a flat MLP extractor, not a graph or set encoder.
 - Node-level arrays exist in the observation but are not consumed by the current extractor.
-- No checkpoint/resume system exists beyond final model save.
+- Checkpointing is in place but there is no checkpoint-resume; a crashed
+  run still restarts from scratch.
 - No HPC-specific vectorized environment orchestration exists yet.
 
 ---
@@ -490,7 +526,7 @@ python -m pytest tests -q
 Expected full-suite result in the current package state:
 
 ```text
-79 passed
+287 passed
 ```
 
 ---
@@ -510,7 +546,21 @@ This script uses paths relative to the package root:
 data/examples/small_vector_001
 tools/graphab.jar
 tmp/training_runs
-tmp/baseline_output
+tmp/experiments/baseline_small_vector_001
+```
+
+The script routes through the experiment contract in
+`habconn.training.experiment.run_experiment`, so each run is a
+self-contained directory:
+
+```text
+tmp/experiments/baseline_small_vector_001/
+    config.json
+    metadata.json
+    history.jsonl
+    baseline_summary.json
+    models/
+        final_model.zip
 ```
 
 Expected console output ends with:
@@ -535,9 +585,24 @@ Expected console output ends with:
 Expected artifacts:
 
 ```text
-tmp/baseline_output/baseline_model.zip
-tmp/baseline_output/history.jsonl
-tmp/baseline_output/baseline_summary.json
+tmp/experiments/baseline_small_vector_001/config.json
+tmp/experiments/baseline_small_vector_001/metadata.json
+tmp/experiments/baseline_small_vector_001/history.jsonl
+tmp/experiments/baseline_small_vector_001/baseline_summary.json
+tmp/experiments/baseline_small_vector_001/evaluation/comparison.json
+tmp/experiments/baseline_small_vector_001/evaluation/comparison.csv
+tmp/experiments/baseline_small_vector_001/checkpoints/checkpoint_NNNNNN_steps.zip
+tmp/experiments/baseline_small_vector_001/selection/checkpoint_evaluations.json
+tmp/experiments/baseline_small_vector_001/selection/model_selection.json
+tmp/experiments/baseline_small_vector_001/deployment/deployment_summary.json
+tmp/experiments/baseline_small_vector_001/deployment/selected_planning_units.gpkg
+tmp/experiments/baseline_small_vector_001/deployment/selected_planning_units.csv
+tmp/experiments/baseline_small_vector_001/inspection/observation_schema.json
+tmp/experiments/baseline_small_vector_001/inspection/feature_summary.json
+tmp/experiments/baseline_small_vector_001/inspection/deployment_action_trace.json
+tmp/experiments/baseline_small_vector_001/inspection/deployment_action_trace.csv
+tmp/experiments/baseline_small_vector_001/models/final_model.zip
+tmp/experiments/baseline_small_vector_001/models/best_model.zip
 ```
 
 Representative local result from the current package:
@@ -582,16 +647,17 @@ python - <<'PY'
 import os
 from pathlib import Path
 
-from habconn.training.trainer import BaselineConfig, train_baseline
+from habconn.training.experiment import ExperimentConfig, run_experiment
 
 pkg = Path(os.environ["HABCONN_PKG"]).resolve()
 scratch = Path(os.environ["HABCONN_SCRATCH"]).resolve()
 
-config = BaselineConfig(
+config = ExperimentConfig(
+    run_name="hpc_smoke",
     data_dir=pkg / "data" / "examples" / "small_vector_001",
     graphab_jar=pkg / "tools" / "graphab.jar",
     work_root=scratch / "training_runs",
-    output_dir=scratch / "baseline_output",
+    output_root=scratch / "experiments",
     budget=3,
     k=10,
     seed=42,
@@ -599,29 +665,31 @@ config = BaselineConfig(
     n_eval_episodes=1,
 )
 
-summary = train_baseline(config)
+summary = run_experiment(config)
 
 eval_summary = summary["evaluation"]
 ep0 = eval_summary["episodes"][0]
 
 print("\n=== HPC Scratch Smoke Test Complete ===")
-print(f"scratch              : {scratch}")
+print(f"run_dir              : {summary['run_dir']}")
 print(f"total_timesteps      : {summary['total_timesteps']}")
 print(f"training_episodes    : {summary['n_training_episodes_logged']}")
 print(f"eval_mean_return     : {eval_summary['mean_return']:.3e}")
 print(f"eval_mean_final_pc   : {eval_summary['mean_final_pc']:.6e}")
 print(f"eval_mean_delta_pc   : {eval_summary['mean_delta_pc']:.3e}")
 print(f"ep0_selected_pus     : {ep0['selected_pu_ids']}")
-print(f"model_path           : {summary['model_path']}")
+print(f"config_path          : {summary['config_path']}")
+print(f"metadata_path        : {summary['metadata_path']}")
 print(f"history_path         : {summary['history_path']}")
-print(f"summary_path         : {config.output_dir / 'baseline_summary.json'}")
+print(f"summary_path         : {summary['summary_path']}")
+print(f"model_path           : {summary['model_path']}")
 PY
 ```
 
 This writes artifacts to:
 
 ```text
-$HABCONN_SCRATCH/baseline_output/
+$HABCONN_SCRATCH/experiments/hpc_smoke/
 ```
 
 This is preferable for cluster jobs because Graphab work directories and baseline outputs are isolated per job.
@@ -691,16 +759,17 @@ python - <<'PY'
 import os
 from pathlib import Path
 
-from habconn.training.trainer import BaselineConfig, train_baseline
+from habconn.training.experiment import ExperimentConfig, run_experiment
 
 pkg = Path(os.environ["HABCONN_PKG"]).resolve()
 scratch = Path(os.environ["HABCONN_SCRATCH"]).resolve()
 
-config = BaselineConfig(
+config = ExperimentConfig(
+    run_name="hpc_smoke",
     data_dir=pkg / "data" / "examples" / "small_vector_001",
     graphab_jar=pkg / "tools" / "graphab.jar",
     work_root=scratch / "training_runs",
-    output_dir=scratch / "baseline_output",
+    output_root=scratch / "experiments",
     budget=3,
     k=10,
     seed=42,
@@ -708,21 +777,23 @@ config = BaselineConfig(
     n_eval_episodes=1,
 )
 
-summary = train_baseline(config)
+summary = run_experiment(config)
 eval_summary = summary["evaluation"]
 ep0 = eval_summary["episodes"][0]
 
 print("\n=== HPC Smoke Test Complete ===")
-print(f"scratch              : {scratch}")
+print(f"run_dir              : {summary['run_dir']}")
 print(f"total_timesteps      : {summary['total_timesteps']}")
 print(f"training_episodes    : {summary['n_training_episodes_logged']}")
 print(f"eval_mean_return     : {eval_summary['mean_return']:.3e}")
 print(f"eval_mean_final_pc   : {eval_summary['mean_final_pc']:.6e}")
 print(f"eval_mean_delta_pc   : {eval_summary['mean_delta_pc']:.3e}")
 print(f"ep0_selected_pus     : {ep0['selected_pu_ids']}")
-print(f"model_path           : {summary['model_path']}")
+print(f"config_path          : {summary['config_path']}")
+print(f"metadata_path        : {summary['metadata_path']}")
 print(f"history_path         : {summary['history_path']}")
-print(f"summary_path         : {config.output_dir / 'baseline_summary.json'}")
+print(f"summary_path         : {summary['summary_path']}")
+print(f"model_path           : {summary['model_path']}")
 PY
 
 echo "=== Output artifacts ==="
@@ -760,9 +831,24 @@ Expected final output includes:
 and lists:
 
 ```text
-baseline_model.zip
+config.json
+metadata.json
 history.jsonl
 baseline_summary.json
+evaluation/comparison.json
+evaluation/comparison.csv
+checkpoints/checkpoint_NNNNNN_steps.zip
+selection/checkpoint_evaluations.json
+selection/model_selection.json
+deployment/deployment_summary.json
+deployment/selected_planning_units.gpkg
+deployment/selected_planning_units.csv
+inspection/observation_schema.json
+inspection/feature_summary.json
+inspection/deployment_action_trace.json
+inspection/deployment_action_trace.csv
+models/final_model.zip
+models/best_model.zip
 ```
 
 ---
@@ -778,10 +864,10 @@ from pathlib import Path
 import os
 
 scratch = Path(os.environ.get("HABCONN_SCRATCH", "tmp")).resolve()
-summary_path = scratch / "baseline_output" / "baseline_summary.json"
+summary_path = scratch / "experiments" / "hpc_smoke" / "baseline_summary.json"
 
 if not summary_path.exists():
-    summary_path = Path("tmp/baseline_output/baseline_summary.json")
+    summary_path = Path("tmp/experiments/baseline_small_vector_001/baseline_summary.json")
 
 print(summary_path)
 summary = json.loads(summary_path.read_text())
@@ -792,8 +878,8 @@ PY
 Check history:
 
 ```bash
-head -n 5 "$HABCONN_SCRATCH/baseline_output/history.jsonl"
-wc -l "$HABCONN_SCRATCH/baseline_output/history.jsonl"
+head -n 5 "$HABCONN_SCRATCH/experiments/hpc_smoke/history.jsonl"
+wc -l "$HABCONN_SCRATCH/experiments/hpc_smoke/history.jsonl"
 ```
 
 Expected:
@@ -818,7 +904,7 @@ python -m pytest tests -q
 Expected current result:
 
 ```text
-79 passed
+287 passed
 ```
 
 Local reference runtime was about 4-5 minutes. HPC runtime may vary depending on filesystem speed, Java startup overhead, and node load.
@@ -1069,7 +1155,21 @@ The HPC smoke test passes if:
 - Java and Graphab jar are available;
 - at least one Graphab-backed integration check passes;
 - the tiny baseline training run completes;
-- `baseline_model.zip`, `history.jsonl`, and `baseline_summary.json` are written;
+- the experiment-contract artifacts are written under the run directory:
+  `config.json`, `metadata.json`, `history.jsonl`,
+  `baseline_summary.json`, `evaluation/comparison.json`,
+  `evaluation/comparison.csv`, at least one
+  `checkpoints/checkpoint_NNNNNN_steps.zip`,
+  `selection/checkpoint_evaluations.json`,
+  `selection/model_selection.json`,
+  `deployment/deployment_summary.json`,
+  `deployment/selected_planning_units.gpkg`,
+  `deployment/selected_planning_units.csv`,
+  `inspection/observation_schema.json`,
+  `inspection/feature_summary.json`,
+  `inspection/deployment_action_trace.json`,
+  `inspection/deployment_action_trace.csv`,
+  `models/final_model.zip`, and `models/best_model.zip`;
 - `baseline_summary.json` contains a finite final PC and non-empty selected planning units.
 
 The smoke test fails if:
@@ -1086,21 +1186,26 @@ The smoke test fails if:
 
 ## 20. Recommended Next Step After A Successful Smoke Test
 
-If this smoke test passes, the next project milestone should not immediately be large-scale HPC training.
+If this smoke test passes, the next step is **not** transfer
+learning or large-scale HPC training. It is a longer learning
+rehearsal on the same single landscape.
 
-The recommended next milestone is:
+Use the implemented training rehearsal runner:
 
-```text
-Stage 4: multi-landscape data and transfer-learning-ready evaluation
-```
+- CLI: `08_pkg/habconn/scripts/run_experiment.py`
+  (`--preset smoke` matches this compatibility gate;
+  `--preset rehearsal` runs a longer learning run; opt into
+  TensorBoard with `--tensorboard`).
+- Operator runbook: [`06_infra/training_rehearsal.md`](06_infra/training_rehearsal.md).
+- HPC/Slurm template:
+  [`06_infra/templates/habconn_training_rehearsal.slurm`](06_infra/templates/habconn_training_rehearsal.slurm).
+- Design-of-record (knobs, conventions):
+  [`06_infra/hpc_training.md`](06_infra/hpc_training.md).
 
-That means:
+For a human-friendly workstation walkthrough of the produced
+artifacts, see the notebook scaffold under
+`08_pkg/habconn/notebooks/`.
 
-- add at least one additional real example landscape;
-- define landscape-level metadata and split artifacts;
-- make evaluation run across multiple landscapes;
-- preserve the single-landscape smoke test as a stable baseline;
-- only then consider vectorized or HPC-scaled training.
-
-The HPC smoke test is a compatibility gate. It should come before, not replace, the multi-landscape milestone.
-
+**This smoke runbook remains the HPC compatibility gate.** Keep it
+short and fast — do not slow it down into a rehearsal. The
+rehearsal runner is the second step after this gate has passed.

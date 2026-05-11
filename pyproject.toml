@@ -25,12 +25,14 @@ train = [
   "stable-baselines3>=2.0",
   "sb3-contrib>=2.0",
   "torch>=2.0",
+  "tensorboard>=2.13",
 ]
 dev = [
   "pytest>=7.0",
   "stable-baselines3>=2.0",
   "sb3-contrib>=2.0",
   "torch>=2.0",
+  "tensorboard>=2.13",
 ]
 
 [tool.setuptools]
